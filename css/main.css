@@ -165,6 +165,7 @@ header {
 }
 
 .active {
+    background: #34495e;
 }
 
 .mode a {

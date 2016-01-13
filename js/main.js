@@ -4,7 +4,7 @@ $(function () {
     curent: 'html',
     html: '',
     css: '',
-    js: ''
+    javascript: ''
   };
 
 
@@ -100,6 +100,7 @@ $(function () {
   });
 
   var showResult = function () {
+    var frame = window.frames[0];
     var buffer = [];
     buffer.push('<html>');
     buffer.push('<head>');
@@ -109,12 +110,13 @@ $(function () {
     buffer.push('</head>');
     buffer.push('<body>');
     buffer.push(_code.html);
-    buffer.push('<script>');
-    buffer.push(_code.js);
-    buffer.push('</script>');
     buffer.push('</body>');
     buffer.push('</html>');
-    window.frames[0].document.body.innerHTML = buffer.join('');
+    frame.document.body.innerHTML = buffer.join('');
+    // Add script
+    var script = frame.document.createElement('script');
+    script.appendChild(frame.document.createTextNode(_code.javascript));
+    frame.document.body.appendChild(script);
   };
 
 
