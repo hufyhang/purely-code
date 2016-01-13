@@ -115,7 +115,9 @@ $(function () {
     frame.document.body.innerHTML = buffer.join('');
     // Add script
     var script = frame.document.createElement('script');
-    script.appendChild(frame.document.createTextNode(_code.javascript));
+    script.appendChild(frame.document.createTextNode('try {'
+                       + _code.javascript
+                       + '} catch(e) {console.warn(e)}'));
     frame.document.body.appendChild(script);
   };
 
