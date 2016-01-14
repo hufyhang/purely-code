@@ -124,11 +124,17 @@ header, section {
 }
 
 header {
-    /*height: 50px;*/
+    height: 50px;
+    line-height: 50px;
+}
+
+.small {
+    width: 10%;
 }
 
 #workbench {
-
+    border-top: 1px solid #7f8c8d;
+    border-bottom: 1px solid #7f8c8d;
 }
 
 #code-pane {
@@ -144,7 +150,7 @@ header {
 #editor {
     position: absolute;
     top: 0;
-    bottom: 30px;
+    bottom: 0;
     left: 0;
     right: 0;
     font-weight: 100;
@@ -158,10 +164,33 @@ header {
     border: 0;
 }
 
+#modes-container {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
+    min-width: 900px;
+}
+
+#modes-wrapper {
+    position: relative;
+    float: left;
+    left: 50%;
+}
+
 #modes {
+    position: relative;
+    float: left;
+    left: -50%;
     margin: 0;
+    line-height: 50px;
     list-style: none;
     background: #c0392b;
+    padding: 0;
+    /*border: 1px solid #ecf0f1;*/
+    border-radius: 5px;
 }
 
 .active {
@@ -190,6 +219,10 @@ header {
     border: 1px dotted #3498db;
 }
 
+#size-btn {
+    border-left: 1px solid #ecf0f1;
+}
+
 footer {
     background: #10192C;
     padding: 20px 0;
@@ -202,7 +235,16 @@ footer {
     margin: 0 auto;
 }
 
+h1 {
+    margin: 0;
+}
 
+h1 a {
+    color: #ecf0f1;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-left: 10px;
+}
 
 
 

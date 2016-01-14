@@ -87,16 +87,21 @@ $(function () {
     evt = evt ? evt : window.event;
     var $target = evt.target ? evt.target : window.srcElement;
     $target = $($target);
-    $this.find('a').each(function () {
-      $(this).removeClass('active');
-    });
-    $target.addClass('active');
+    if ($target.attr('id') !== 'size-btn') {
+      $this.find('a:not(#size-btn)').each(function () {
+        $(this).removeClass('active');
+      });
+      $target.addClass('active');
 
-    var mode = $target.attr('data-mode');
-    _code[_code.curent] = editor.getValue();
-    _code.curent = mode;
-    editor.getSession().setMode('ace/mode/' + mode);
-    editor.setValue(_code[_code.curent]);
+      var mode = $target.attr('data-mode');
+      _code[_code.curent] = editor.getValue();
+      _code.curent = mode;
+      editor.getSession().setMode('ace/mode/' + mode);
+      editor.setValue(_code[_code.curent]);
+    }
+    else {
+      $('#code-pane').toggleClass('small');
+    }
   });
 
   var showResult = function () {

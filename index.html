@@ -12,7 +12,6 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         <!--[if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <![endif]-->
@@ -24,16 +23,24 @@
 
 
         <header class="clearfix">
-            <div class="float-left">LOGO</div>
+            <div class="float-left">
+                <h1><a href="/">Code Craft</a></h1>
+            </div>
+
+            <div id="modes-container">
+                <div id="modes-wrapper">
+                    <ul id="modes" class="clearfix">
+                        <li class="mode float-left"><a class="active" data-mode="html" href="javascript:;">HTML</a></li>
+                        <li class="mode float-left"><a data-mode="css" href="javascript:;">CSS</a></li>
+                        <li class="mode float-left"><a data-mode="javascript" href="javascript:;">JS</a></li>
+                        <li class="mode float-right"><a id="size-btn" data-status="normal" href="javascript:;">Full Width</a></li>
+                    </ul>
+                </div>
+            </div>
         </header>
 
         <section id="workbench" class="clearfix">
             <div id="code-pane" class="float-left pane">
-                <ul id="modes" class="clearfix">
-                    <li class="mode float-left"><a class="active" data-mode="html" href="javascript:;">HTML</a></li>
-                    <li class="mode float-left"><a data-mode="css" href="javascript:;">CSS</a></li>
-                    <li class="mode float-left"><a data-mode="javascript" href="javascript:;">JS</a></li>
-                </ul>
                 <div id="editor-wrapper">
                     <div id="editor"></div>
                 </div>
