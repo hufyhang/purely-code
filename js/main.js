@@ -17,10 +17,7 @@ $(function () {
 
     var TOP_HEIGHT = $('header').innerHeight();
     var RESIZE_DELAY = 300;
-    var $panes = $('.pane');
-    var $pane;
     var $window = $(window);
-    var $document = $(document);
 
     var QueryString = (function () {
   // This function is anonymous, is executed immediately and
@@ -66,6 +63,11 @@ $(function () {
     resize();
   }, RESIZE_DELAY));
   resize();
+
+  // $('#code-pane').resizable({
+  //   containment: 'parent',
+  //   handles: 'e, w'
+  // });
 
 
   // Bring in ACE editor
@@ -129,14 +131,6 @@ $(function () {
     var frame = window.frames[0];
     frame.document.body.innerHTML = _code.html;
 
-    // if (style) {
-    //   frame.document.head.removeChild(style);
-    // }
-    // if (script) {
-    //   frame.document.body.removeChild(script);
-    // }
-
-    // frame.document.innerHTML = _code.html;
     var $doc = $(frame.document);
     $doc.find('style').remove();
     // Add style
