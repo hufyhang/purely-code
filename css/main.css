@@ -146,7 +146,7 @@ header {
 }
 
 #code-pane {
-    width: 500px;
+    width: 60%;
     border: none;
     border-right: 5px solid #3498db;
 }
