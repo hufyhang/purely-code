@@ -114,7 +114,6 @@ body {
 
 .pane {
     height: 100%;
-    width: 50%;
     color: #2c3e50;
     background: #ecf0f1;
 }
@@ -129,12 +128,12 @@ header {
 }
 
 .small {
-    width: 0;
+    width: 0 !important;
     border: 0 !important;
 }
 
 .big {
-    width: 100%;
+    width: 100% !important;
     border: 0 !important;
 }
 
@@ -144,6 +143,7 @@ header {
 }
 
 #code-pane {
+    width: 60%;
     border-right: 2px solid #3498db;
 }
 
@@ -161,6 +161,10 @@ header {
     right: 0;
     font-weight: 100;
     font-size: 1rem;
+}
+
+#result-pane {
+    width: 40%;
 }
 
 #result-frame {

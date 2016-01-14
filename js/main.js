@@ -71,6 +71,7 @@ $(function () {
     useSoftTabs: true,
     tabSize: 2
   });
+  editor.getSession().setUseWorker(false);
   editor.getSession().setMode("ace/mode/html");
   editor.on('change', debounce(function () {
     _code[_code.curent] = editor.getValue();
@@ -96,6 +97,12 @@ $(function () {
       var mode = $target.attr('data-mode');
       _code[_code.curent] = editor.getValue();
       _code.curent = mode;
+      if (mode === 'html') {
+        editor.getSession().setUseWorker(false);
+      }
+      else {
+        editor.getSession().setUseWorker(true);
+      }
       editor.getSession().setMode('ace/mode/' + mode);
       editor.setValue(_code[_code.curent]);
     }
@@ -108,22 +115,28 @@ $(function () {
     }
   });
 
+  var style, script;
+
   var showResult = function () {
     var frame = window.frames[0];
-    var buffer = [];
-    buffer.push('<html>');
-    buffer.push('<head>');
-    buffer.push('<style>');
-    buffer.push(_code.css);
-    buffer.push('</style>');
-    buffer.push('</head>');
-    buffer.push('<body>');
-    buffer.push(_code.html);
-    buffer.push('</body>');
-    buffer.push('</html>');
-    frame.document.body.innerHTML = buffer.join('');
+    frame.document.body.innerHTML = _code.html;
+
+    // if (style) {
+    //   frame.document.head.removeChild(style);
+    // }
+    // if (script) {
+    //   frame.document.body.removeChild(script);
+    // }
+
+    // frame.document.innerHTML = _code.html;
+    var $doc = $(frame.document);
+    $doc.find('style').remove();
+    // Add style
+    style = frame.document.createElement('style');
+    style.appendChild(frame.document.createTextNode(_code.css));
+    frame.document.head.appendChild(style);
     // Add script
-    var script = frame.document.createElement('script');
+   script = frame.document.createElement('script');
     script.appendChild(frame.document.createTextNode('try {'
                        + _code.javascript
                        + '} catch(e) {console.warn(e)}'));
