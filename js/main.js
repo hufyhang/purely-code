@@ -1,21 +1,28 @@
 'use strict';
 $(function () {
-  var _code = {
-    curent: 'html',
-    html: '',
-    css: '',
-    javascript: ''
-  };
+  require.config({
+    paths: {
+      ace: '../ace'
+    }
+  });
+
+  require(['ace/ace', 'ace/ext-emmet'], function () {
+    var _code = {
+      curent: 'html',
+      html: '',
+      css: '',
+      javascript: ''
+    };
 
 
-  var TOP_HEIGHT = $('header').innerHeight();
-  var RESIZE_DELAY = 300;
-  var $panes = $('.pane');
-  var $pane;
-  var $window = $(window);
-  var $document = $(document);
+    var TOP_HEIGHT = $('header').innerHeight();
+    var RESIZE_DELAY = 300;
+    var $panes = $('.pane');
+    var $pane;
+    var $window = $(window);
+    var $document = $(document);
 
-  var QueryString = (function () {
+    var QueryString = (function () {
   // This function is anonymous, is executed immediately and
   // the return value is assigned to QueryString!
   var query_string = {};
@@ -73,6 +80,7 @@ $(function () {
   });
   editor.getSession().setUseWorker(false);
   editor.getSession().setMode("ace/mode/html");
+  editor.setOption("enableEmmet", true);
   editor.on('change', debounce(function () {
     _code[_code.curent] = editor.getValue();
     showResult();
@@ -136,12 +144,16 @@ $(function () {
     style.appendChild(frame.document.createTextNode(_code.css));
     frame.document.head.appendChild(style);
     // Add script
-   script = frame.document.createElement('script');
+    script = frame.document.createElement('script');
     script.appendChild(frame.document.createTextNode('try {'
                        + _code.javascript
                        + '} catch(e) {console.warn(e)}'));
     frame.document.body.appendChild(script);
   };
+
+});
+
+
 
 
 });
