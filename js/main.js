@@ -100,7 +100,11 @@ $(function () {
       editor.setValue(_code[_code.curent]);
     }
     else {
+      var $sizeBtn = $('#size-btn');
+      var text = $sizeBtn.text() === 'Full' ? 'Normal' : 'Full';
+      $sizeBtn.text(text);
       $('#code-pane').toggleClass('small');
+      $('#result-pane').toggleClass('big');
     }
   });
 

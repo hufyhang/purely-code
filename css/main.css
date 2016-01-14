@@ -129,7 +129,13 @@ header {
 }
 
 .small {
-    width: 10%;
+    width: 0;
+    border: 0 !important;
+}
+
+.big {
+    width: 100%;
+    border: 0 !important;
 }
 
 #workbench {
@@ -205,6 +211,10 @@ header {
     text-align: center;
     color: #FFF;
     text-decoration: none;
+}
+
+.mode a:not(.active):hover {
+    background-color: #e74c3c;
 }
 
 
